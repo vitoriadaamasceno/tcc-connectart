@@ -20,10 +20,11 @@ class UserController {
 
       if (user) {
         const passIsCorrect = await bcrypt.compare(password, user.password);
-
+        
         if (passIsCorrect) {
           const { password, ...userWithoutPass } = user;
           const accessToken = userSignJwtAccessToken(userWithoutPass);
+          res.set('Authorization', `Bearer ${accessToken}`);
           const result = {
             user: userWithoutPass,
             token: accessToken,

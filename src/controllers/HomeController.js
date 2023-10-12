@@ -1,7 +1,14 @@
-class HomeController{
+const path = require("path");
 
-    async index(req,res){
-        res.send("Start");
+class HomeController {
+
+    async index(req, res) {
+        res.send("Hello World")
+        //pagina inicial
+    }
+    
+    async login(req, res) {
+        res.render("index");
     }
 }
 

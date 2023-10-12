@@ -1,9 +1,22 @@
 const express = require("express");
 const app = express();
+const path = require("path");
+const bodyParser = require('body-parser');
 const port = 3000;
 const router = require("./src/routes/routes");
 
-app.use(express.json());
+//
+// Configurar o EJS como mecanismo de renderização
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src", "views"));
+
+// Servir arquivos estáticos (CSS, imagens, etc.) a partir da pasta "public"
+app.use(express.static(path.join(__dirname, "src", "public")));
+//
+//bodyparsser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use("/", router);
 
 app.listen(port, () =>
