@@ -7,8 +7,8 @@
 /* helpers/align.css */
 
 .align {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .grid {
@@ -198,6 +198,19 @@ input[type="submit"] {
 .login input[type="submit"]:focus,
 .login input[type="submit"]:hover {
     background-color: var(--loginSubmitHoverBackgroundColor);
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Allow the image column to grow and fill available space */
+}
+
+.form {
+    flex: 1;
+    /* Allow the form column to grow and fill available space */
 }
 
 /* modules/text.css */
