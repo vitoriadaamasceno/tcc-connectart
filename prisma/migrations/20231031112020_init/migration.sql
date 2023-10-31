@@ -9,8 +9,6 @@ CREATE TABLE "User" (
     "city" TEXT NOT NULL,
     "UF" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "gender" TEXT,
-    "profileImage" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
@@ -21,6 +19,8 @@ CREATE TABLE "Resume" (
     "bio" TEXT NOT NULL,
     "branch" TEXT NOT NULL,
     "languages" TEXT,
+    "gender" TEXT,
+    "profileImage" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
     "userId" INTEGER NOT NULL,
