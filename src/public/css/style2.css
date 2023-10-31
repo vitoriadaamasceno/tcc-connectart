@@ -128,7 +128,7 @@ section{
 	align-items: center;
 	justify-content: center;
 	background: var(--main-color);
-	color: var(--bg-color);
+	color: var(--text-color);
 	margin: 0 20px 30px 0;
 }
 .home-social-media a:hover{
@@ -138,7 +138,7 @@ section{
 }
 .btn{
 	display: inline-block;
-	color: var(--bg-color);
+	color: var(--text-color);
 	background: var(--main-color);
 	font-size: var(--p-font);
 	padding: 10px 35px;

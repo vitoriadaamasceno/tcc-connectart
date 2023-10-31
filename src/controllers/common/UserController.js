@@ -29,8 +29,9 @@ class UserController {
             user: userWithoutPass,
             token: accessToken,
           };
-
-          return res.status(200).json(result);
+          console.log(result)
+          return res.status(200).redirect("/");
+        
         } else {
           return res
             .status(401)

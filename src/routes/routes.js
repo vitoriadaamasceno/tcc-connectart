@@ -10,6 +10,7 @@ const UserController = require("../controllers/common/UserController");
 router.get("/", HomeController.index);
 router.get("/login", HomeController.login);
 router.post("/loggar", UserController.login);
+router.get("/register", HomeController.register);
 router.post("/register", UserController.register);
 
 //router.use(Auth);
