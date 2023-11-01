@@ -13,6 +13,10 @@
       |-- models
   
       |-- routes
+
+      |-- views
+
+      |-- public
   
       |-- server.js
 
@@ -36,7 +40,13 @@
 6. **`routes`**:
    Aqui estão os arquivos que definem as rotas da aplicação. Cada arquivo pode conter rotas relacionadas a uma funcionalidade específica da aplicação. As rotas são responsáveis por associar as URLs às ações que devem ser executadas quando um usuário acessa determinados caminhos.
 
-7. **`server.js`**:
+7. **`views`**:
+   Arquivo html(ejs)
+
+7. **`views`**:
+   Arquivos css, js, imagens
+
+9. **`server.js`**:
    Este é o arquivo principal onde o servidor é inicializado. Normalmente, ele contém a configuração do servidor, a definição das rotas, o uso de middlewares e a escuta de portas para lidar com as requisições dos clientes.
 
 
