@@ -1,5 +1,6 @@
 //Dependencies
 const bcrypt = require("bcrypt");
+const { DateTime } = require('luxon');
 // Local Dependencies
 const UserCreator = require("../../models/user/UserCreator");
 const UserFinder = require("../../models/user/UserFinder");
@@ -20,7 +21,7 @@ class UserController {
 
       if (user) {
         const passIsCorrect = await bcrypt.compare(password, user.password);
-        
+
         if (passIsCorrect) {
           const { password, ...userWithoutPass } = user;
           const accessToken = userSignJwtAccessToken(userWithoutPass);
@@ -31,7 +32,7 @@ class UserController {
           };
           console.log(result)
           return res.status(200).redirect("/");
-        
+
         } else {
           return res
             .status(401)
@@ -57,11 +58,10 @@ class UserController {
         date_of_birth,
         city,
         UF,
-        email,
-        gender,
-        profile_image
+        email
       } = req.body;
 
+      const formattedDateOfBirth = DateTime.fromFormat(date_of_birth, 'yyyy-MM-dd').toJSDate();
       const undefinedFields = [];
       if (!email || email.trim() === '') {
         undefinedFields.push('email');
@@ -75,40 +75,39 @@ class UserController {
       if (!password || password.trim() === '') {
         undefinedFields.push('password');
       }
-  
+
       if (undefinedFields.length > 0) {
         return res.status(400).json({
           message: "Invalid request body",
         });
       }
-  
+
       const existsFields = [];
       const emailExists = await UserCreator.validateDuplicateEmail(email);
       const usernameExists = await UserCreator.validateDuplicateUsername(username);
-  
+
       if (emailExists) {
         existsFields.push("email");
       }
       if (usernameExists) {
         existsFields.push("username");
       }
+      console.log(existsFields)
       if (existsFields.length > 0) {
         return res.status(400).json({
           message: `Fields already exist: ${existsFields.join(", ")}`,
         });
       }
-  
+
       const user = await UserCreator.createUser({
         full_name,
         username,
         password,
         phone,
-        date_of_birth,
+        formattedDateOfBirth,
         city,
         UF,
-        email,
-        gender,
-        profile_image
+        email
       });
       const { password: pass, ...userWithoutPass } = user;
       return res.status(200).json(userWithoutPass);
@@ -117,8 +116,8 @@ class UserController {
       return res.status(500).json({ message: "Internal server error", error });
     }
   }
-  
-/////////////////////////////////////////////////
+
+  /////////////////////////////////////////////////
   async profile(req, res) {
     try {
       const { password, createdAt, updatedAt, ...userWithoutPass } = req.user;
@@ -140,24 +139,24 @@ class UserController {
           message: "Invalid request body",
         });
       }
-      
+
       const userToUpdate = await UserFinder.findById(id);
       const existsFields = [];
-  
+
       if (email && email !== userToUpdate.email) {
         const emailExists = await UserCreator.validateDuplicateEmail(email);
         if (emailExists) {
           existsFields.push("email");
         }
       }
-  
+
       if (phone && phone !== userToUpdate.phone) {
         const phoneExists = await UserCreator.validateDuplicatePhone(phone);
         if (phoneExists) {
           existsFields.push("phone");
         }
       }
-  
+
       if (username && username !== userToUpdate.username) {
         const usernameExists = await UserCreator.validateDuplicateUsername(username);
         if (usernameExists) {

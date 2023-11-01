@@ -8,12 +8,10 @@ class UserCreator {
       username,
       password,
       phone,
-      date_of_birth,
+      formattedDateOfBirth,
       city,
       UF,
-      email,
-      gender,
-      profile_image
+      email
     } = userData;
     try {
       const hash = await bcrypt.hash(password, 10);
@@ -24,12 +22,10 @@ class UserCreator {
           username: username,
           password: hash, 
           phone: phone,
-          dateOfBirth: date_of_birth,
+          dateOfBirth: formattedDateOfBirth,
           city: city,
           UF: UF,
-          email: email,
-          gender:gender ?? null,
-          profileImage: profile_image ?? null,
+          email: email
          },
       });
       return user;
