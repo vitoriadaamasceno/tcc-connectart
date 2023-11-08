@@ -27,6 +27,22 @@ class UserFinder {
     }
   }
 
+  async findByEmail(email) {
+    try {
+      const user = await prisma.user.findUnique({
+        where: {
+          email: email,
+        },
+      });
+
+      return user;
+    } catch (err) {
+      console.log(err);
+      // internal server error
+      return undefined;
+    }
+  }
+
   async findByUsername(username) {
     try {
       const user = await prisma.user.findUnique({
@@ -36,11 +52,11 @@ class UserFinder {
       });
 
       return user;
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      // internal server error
       return undefined;
     }
   }
-  
 }
 module.exports = new UserFinder();
