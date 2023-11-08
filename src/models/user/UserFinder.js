@@ -5,21 +5,13 @@ class UserFinder {
     try {
       const user = await prisma.user.findUnique({
         where: {
-          id,
-        },
-        include: {
-          company: true,
+          id: id,
         },
       });
-
-      if (user == undefined) {
-        return undefined;
-      }
 
       return user;
     } catch (error) {
       console.log(error);
-      // internal server error
       return undefined;
     }
   }
@@ -31,23 +23,6 @@ class UserFinder {
       return users;
     } catch (error) {
       console.log(error);
-      // internal server error
-      return [];
-    }
-  }
-
-  async findByEmail(email) {
-    try {
-      const user = await prisma.user.findUnique({
-        where: {
-          email: email,
-        },
-      });
-
-      return user;
-    } catch (err) {
-      console.log(err);
-      // internal server error
       return undefined;
     }
   }
@@ -61,11 +36,11 @@ class UserFinder {
       });
 
       return user;
-    } catch (err) {
-      console.log(err);
-      // internal server error
+    } catch (error) {
+      console.log(error);
       return undefined;
     }
   }
+  
 }
 module.exports = new UserFinder();

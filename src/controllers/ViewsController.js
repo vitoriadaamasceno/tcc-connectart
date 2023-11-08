@@ -1,6 +1,6 @@
 const path = require("path");
 
-class HomeController {
+class ViewsController {
 
     async index(req, res) {
         res.render("index");
@@ -16,4 +16,4 @@ class HomeController {
     }
 }
 
-module.exports = new HomeController();
+module.exports = new ViewsController();

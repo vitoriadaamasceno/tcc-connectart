@@ -3,17 +3,15 @@ const prisma = require("../../config/prisma");
 class UserDeleter {
   async delete(id) {
     try {
-      const user = await prisma.user.findUnique({ where: { id } });
-
-      if (user) {
-        await prisma.user.delete({ where: { id: id } });
-        return true;
-      } else {
-        return false;
-      }
+      const user = await prisma.user.delete({
+        where: {
+          id: id,
+        },
+      });
+      return user;
     } catch (error) {
       console.log(error);
-      return false;
+      return undefined;
     }
   }
 }
