@@ -49,7 +49,7 @@
 9. **`server.js`**:
    Este é o arquivo principal onde o servidor é inicializado. Normalmente, ele contém a configuração do servidor, a definição das rotas, o uso de middlewares e a escuta de portas para lidar com as requisições dos clientes.
 
-
+## 1° passo baixar sqlite
 
 ## Prisma
 
