@@ -1,11 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Bio</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Biografia</title>
 </head>
-<body>
-    
+
+<body class="align">
+
+    <div class="image">
+        <img src="/image/artinsertion.png" alt="Imagem" width="350" height="200">
+    </div>
+    <div class="form">
+        <div class="grid">
+            <form action="/bio" method="POST" class="form login" id="registerForm">
+
+                <div class="">
+                    <span>Bio</span>
+                    <input id="bio" type="text" name="bio" class="form__input" placeholder="Um breve resumo sobre você"
+                        required>
+                </div>
+
+                <div class="">
+                    <span>Ramo</span>
+                    <input id="branch" type="text" name="branch" class="form__input" placeholder="Em que ramo da arte você atua?"
+                        required>
+                </div>
+
+                <div class="">
+                    <span>Genero</span>
+                    <input autocomplete="gender" id="email" type="text" name="email" class="form__input"
+                        placeholder="Qual genero você se identifica?" required>
+                </div>
+
+                <div class="">
+                    <span>Idioma Secundario</span>
+                    <select id="idioma" type="text" name="idioma" class="form__input" required>
+                    </select>
+                </div>
+
+                <div class="">
+                    <span>Imagem de Perfil</span>
+                    <input autocomplete="profile" id="profile" type="text" name="profile" class="form__input"
+                        placeholder="Adicione a foto do perfil" required>
+                </div>
+
+                <div class="form__field">
+                    <input type="submit" value="Finalizar">
+                </div>
+
+                <div class="form__field">
+                    <input type="submit" value="Pular etapa">
+                </div>
+
+            </form>
+
+            <p class="text--center">Já tem cadastro?Faça <a href="http://localhost:3000/login">Login</a> <svg
+                    class="icon">
+                    <use xlink:href="#icon-arrow-right"></use>
+                </svg></p>
+
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="icons">
+            <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
+                <path
+                    d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" />
+            </symbol>
+        </svg>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener("submit", async function (event) {
+            event.preventDefault(); // Evita o envio automático do formulário
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('Usuário cadastrado, faça login para acessar');
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+                // Lidar com erros de conexão ou outros erros inesperados
+            }
+        });
+    </script>
 </body>
+
 </html>

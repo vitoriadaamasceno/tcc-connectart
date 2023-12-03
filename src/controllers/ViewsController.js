@@ -14,6 +14,10 @@ class ViewsController {
     async register(req, res) {
         res.render("register");
     }
+
+    async bio(req, res) {
+        res.render("bio");
+     }
 }
 
 module.exports = new ViewsController();

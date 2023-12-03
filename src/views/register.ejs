@@ -129,18 +129,9 @@
                     body: JSON.stringify(data)
                 });
 
-                // Adicione um console.log da resposta para verificar o que está sendo retornado
                 if (response.ok) {
-                    alert('Usuário cadastrado, faça login para acessar');
-                } else {
-                    const errorData = await response.json();
-                    if (errorData.message) {
-                        alert('Email , Telefone ou username já existe');
-                    } else {
-                        alert('Falha na requisição');
-                        // Adicione a lógica para lidar com outros tipos de erro se necessário
-                    }
-                }
+                    alert('Usuário cadastrado, faça login para acessar ou complete seu perfil');
+                } 
             } catch (error) {
                 console.error('Erro na requisição:', error);
                 // Lidar com erros de conexão ou outros erros inesperados

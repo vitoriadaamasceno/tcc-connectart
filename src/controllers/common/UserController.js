@@ -92,7 +92,6 @@ class UserController {
       if (usernameExists) {
         existsFields.push("username");
       }
-      console.log(existsFields)
       if (existsFields.length > 0) {
         return res.status(400).json({
           message: `Fields already exist: ${existsFields.join(", ")}`,
