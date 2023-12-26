@@ -18,6 +18,6 @@ router.get("/home", ViewsController.home);
 
 //Post
 
-//Event
+//Eventos
 
 module.exports = router;
