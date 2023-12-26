@@ -1,4 +1,4 @@
-# ART_CONNECT
+# CONNECTART
 
 ### PASTAS - projeto
 
@@ -67,4 +67,10 @@ Feito esses passos, para rodar o projeto utilize o comando `npm start`
 
 O banco de dados é um postgres, que está hospedado em nuvem, e é gerenciado através do Prisma.
 
-Para visualiza-lo use o comando `npm prisma studio` no terminal
+Para visualiza-lo use o comando `npx prisma studio` no terminal
+
+
+## Aplicação disponivel em :
+
+https://connectart.onrender.com
+
