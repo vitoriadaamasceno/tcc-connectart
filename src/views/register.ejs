@@ -12,7 +12,7 @@
 <body class="align">
 
     <div class="image">
-        <img src="/image/artinsertion.png" alt="Imagem" width="350" height="200">
+        <img src="/image/artinsertion.png" alt="Imagem" width="500" height="230">
     </div>
     <div class="form">
         <div class="grid">
@@ -128,13 +128,14 @@
                     },
                     body: JSON.stringify(data)
                 });
-
                 if (response.ok) {
                     alert('Usuário cadastrado, faça login para acessar ou complete seu perfil');
-                } 
+                } else {
+                    alert('Erro ao cadastrar usuário. Verifique os dados e tente novamente.');
+                }
             } catch (error) {
                 console.error('Erro na requisição:', error);
-                // Lidar com erros de conexão ou outros erros inesperados
+                alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
             }
         });
     </script>

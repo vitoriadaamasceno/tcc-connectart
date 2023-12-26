@@ -14,7 +14,7 @@
 .grid {
     inline-size: 90%;
     margin-inline: auto;
-    max-inline-size: 20rem;
+    max-inline-size: 22rem;
 }
 
 /* helpers/hidden.css */
@@ -53,9 +53,9 @@
 :root {
     --htmlFontSize: 100%;
 
-    --bodyBackgroundColor: #393C57;
+    --bodyBackgroundColor: #422F6A;;
     --bodyColor: var(--baseColor);
-    --bodyFontFamily: "Open Sans";
+    --bodyFontFamily: 'Poppins';
     --bodyFontFamilyFallback: sans-serif;
     --bodyFontSize: 0.875rem;
     --bodyFontWeight: 400;

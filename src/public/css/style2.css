@@ -22,7 +22,7 @@ section{
 	padding-top: 100px;
 }
 :root{
-	--bg-color: #393C57;
+	--bg-color: #422F6A;;
 	--text-color: #F5F5F5;
 	--main-color: #A280CA;
 	--second-color: #151728;
@@ -33,7 +33,7 @@ section{
 
 /* ids e class */
 .logo-header img{
-	width: 90px;
+	width: 110px;
 }
 #header{
 	max-width: 1100px;
