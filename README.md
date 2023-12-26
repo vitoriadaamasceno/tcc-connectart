@@ -49,29 +49,22 @@
 9. **`server.js`**:
    Este é o arquivo principal onde o servidor é inicializado. Normalmente, ele contém a configuração do servidor, a definição das rotas, o uso de middlewares e a escuta de portas para lidar com as requisições dos clientes.
 
-## 1° passo baixar sqlite
+## Iniciando o projeto localmente
 
-## Prisma
+Para iniciar o projeto, clone e abra a pasta do projeto no vscode, depois, acesse o terminal e instale as dependências usando o gerenciador de pacotes que preferir.
 
-Para iniciar o projeto, clone e abra a pasta do projeto no vscode, depois, acesse o terminal e instale as dependências usando preferencialmente o NPM.
-Instale usando o comando:
-
-    npm install
+Para instalar as dependência usando o NPM, use `npm install`
 
 Após instalar as depedências, lembre de criar o arquivo .env, seguindo o exemplo em .env.example.
 
-Volte ao terminal e utilize o comando para criar o banco de dados local (sqlite).
-
-    npx prisma migrate reset
-
-O comando `npx prisma migrate reset` irá criar o banco de dados e as tabelas, de acordo com o que foi definido no arquivo `schema.prisma`.
-
-O prisma client é gerado junto ao comando de migrate, mas caso não seja gerado, utilize o comando:
-
-    npx prisma generate
+Utilize o comando `npx prisma generate` para gerar o Prisma Client.
 
 O Prisma Client é responsável por fazer a conexão e as operações com o banco de dados, e deve ser gerado sempre que ocorre alguma migration (o PrismaClient é criado dentro da pasta node_modules, pela própria lib do prisma).
 
-Feito esses passos, para rodar o projeto utilize o comando.
+Feito esses passos, para rodar o projeto utilize o comando `npm start`
 
-    node server.js
+## Banco de dados
+
+O banco de dados é um postgres, que está hospedado em nuvem, e é gerenciado através do Prisma.
+
+Para visualiza-lo use o comando `npm prisma studio` no terminal
