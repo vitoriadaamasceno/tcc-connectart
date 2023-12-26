@@ -18,6 +18,10 @@ class ViewsController {
     async bio(req, res) {
         res.render("bio");
      }
+
+    async home(req, res) {
+        res.render("timeline"); 
+    }
 }
 
 module.exports = new ViewsController();
