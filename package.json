@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node --watch server.js",
+    "build": "echo 'Executando tarefas de build, se necessário'"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0",
