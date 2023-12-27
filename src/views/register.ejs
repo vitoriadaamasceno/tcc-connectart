@@ -129,9 +129,11 @@
                     body: JSON.stringify(data)
                 });
                 if (response.ok) {
-                    alert('Usuário cadastrado, faça login para acessar ou complete seu perfil');
+                    alert('Cadastro realizado com sucesso!');
+                    window.location.href = 'http://localhost:3000/bio';
                 } else {
-                    alert('Erro ao cadastrar usuário. Verifique os dados e tente novamente.');
+                    console.log('Erro na requisição:', response.status, response.statusText);
+                    alert('Email, Telefone ou Username já existem. Verifique os dados e tente novamente.');
                 }
             } catch (error) {
                 console.error('Erro na requisição:', error);
