@@ -67,6 +67,32 @@ class UserCreator {
     }
   }
 
+  async createResume(bio, branch, languages, gender, profileImage, userId) {
+
+    try {
+      if (Object.keys(profileImage).length === 0 && profileImage.constructor === Object) {
+        profileImage = null;
+      }
+      const resume = await prisma.resume.create({
+        data: {
+          bio: bio,
+          branch: branch,
+          languages: languages,
+          gender: gender,
+          profileImage: profileImage ?? null,
+          userId: userId,
+        },
+      });
+      if (resume) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      return undefined;
+    }
+  }
  
   
 }

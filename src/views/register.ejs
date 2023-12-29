@@ -45,7 +45,7 @@
 
                 <div class="">
                     <span>Email</span>
-                    <input autocomplete="email" id="email" type="text" name="email" class="form__input"
+                    <input autocomplete="email" id="email" type="email" name="email" class="form__input"
                         placeholder="Email" required>
                 </div>
 
@@ -129,6 +129,10 @@
                     body: JSON.stringify(data)
                 });
                 if (response.ok) {
+                    const responseData = await response.json();
+                    // Armazena o token no Local Storage após o registro
+                    localStorage.setItem('accessToken', responseData.token);
+    
                     alert('Cadastro realizado com sucesso!');
                     window.location.href = 'http://localhost:3000/bio';
                 } else {

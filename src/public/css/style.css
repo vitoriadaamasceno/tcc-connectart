@@ -124,8 +124,9 @@ input[type="submit"] {
     display: grid;
     gap: var(--formGap);
 }
-
+.form textarea,
 .form input[type="date"],
+.form input[type="email"],
 .form input[type="password"],
 .form input[type="text"],
 .form input[type="submit"] {
@@ -138,6 +139,17 @@ input[type="submit"] {
 
 .form__input {
     flex: 1;
+}
+.form__textarea {
+    background-image: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    transition: background-color 0.3s;
+    flex:1
 }
 
 /* modules/login.css */
@@ -159,9 +171,13 @@ input[type="submit"] {
 .login {
     color: var(--loginColor);
 }
-
+.login textarea{
+    border-radius: var(--loginBorderRadus);
+    padding: 2rem;
+}
 .login label,
 .login input[type="date"],
+.login input[type="email"],
 .login input[type="text"],
 .login input[type="password"],
 .login input[type="submit"] {
@@ -175,7 +191,8 @@ input[type="submit"] {
     border-top-right-radius: 0;
     padding-inline: 1.25rem;
 }
-
+.login textarea,
+.login input[type="email"],
 .login input[type="date"],
 .login input[type="password"],
 .login input[type="text"] {
@@ -192,6 +209,10 @@ input[type="submit"] {
     color: white;
 }
 
+.login textarea:focus,
+.login textarea:hover,
+.login input[type="email"]:focus,
+.login input[type="email"]:hover,
 .login input[type="date"]:focus,
 .login input[type="date"]:hover,
 .login input[type="password"]:focus,
@@ -207,12 +228,24 @@ input[type="submit"] {
     font-weight: 700;
     text-transform: uppercase;
 }
-
+.login textarea:focus,
 .login input[type="submit"]:focus,
 .login input[type="submit"]:hover {
     background-color: var(--loginSubmitHoverBackgroundColor);
 }
 
+.btn-bio{
+    background-color: var(--loginSubmitBackgroundColor);
+    color: var(--loginSubmitColor);
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: var(--loginBorderRadus);
+    padding: 1rem;
+    inline-size: 100%;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
 .image {
     flex: 1;
     display: flex;

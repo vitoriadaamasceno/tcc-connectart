@@ -25,11 +25,11 @@ class UserController {
         if (passIsCorrect) {
           const { password, ...userWithoutPass } = user;
           const accessToken = userSignJwtAccessToken(userWithoutPass);
-          res.set('Authorization', `Bearer ${accessToken}`);
           const result = {
             user: userWithoutPass,
             token: accessToken,
           };
+          res.set('Authorization', `Bearer ${accessToken}`);
           return res.status(200).json(result);
 
         } else {
@@ -109,6 +109,27 @@ class UserController {
         email
       });
       const { password: pass, ...userWithoutPass } = user;
+      const accessToken = userSignJwtAccessToken(userWithoutPass);
+      const result = {
+        user: userWithoutPass,
+        token: accessToken,
+      };
+      res.set('Authorization', `Bearer ${accessToken}`);
+      return res.status(200).json(result);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Internal server error", error });
+    }
+  }
+
+  async getUser(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await UserFinder.findById(id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      const { password, ...userWithoutPass } = user;
       return res.status(200).json(userWithoutPass);
     } catch (error) {
       console.error(error);
@@ -116,6 +137,37 @@ class UserController {
     }
   }
 
+  async createBio(req, res) {
+    try {
+      const { id } = req.user;
+      const { bio,branch,languages,gender,profileImage} = req.body;
+      
+      if(!bio || bio.trim() === ''){
+        return res.status(400).json({ message: "Invalid request body" });
+      }
+      if(!branch || branch.trim() === ''){
+        return res.status(400).json({ message: "Invalid request body" });
+      }
+      const resume = await UserCreator.createResume(
+        bio,
+        branch,
+        languages,
+        gender,
+        profileImage,
+        id
+      );
+      if(resume){
+        return res.status(200).json(resume);
+      }else{
+        return res.status(400).json({ message: "Ocorreu um erro" });
+      }
+    } catch (error) { 
+      console.error(error);
+      return res.status(500).json({ message: "Internal server error", error });
+    }
+
+  }
+  
 }
 
 module.exports = new UserController();

@@ -11,7 +11,7 @@ module.exports = function (req, res, next) {
       const decoded = userVerifyJwt(token);
 
       if (decoded) {
-        const { iat, exp, ...userWithoutIatExp } = decoded;
+        const {iat, exp, ...userWithoutIatExp } = decoded;
         req.user = userWithoutIatExp;
         next();
       } else {
