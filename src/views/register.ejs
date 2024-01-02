@@ -100,7 +100,7 @@
 
             </form>
 
-            <p class="text--center">Já tem cadastro?Faça <a href="http://localhost:3000/login">Login</a> <svg
+            <p class="text--center">Já tem cadastro?Faça <a href="https://connectart.onrender.com/login">Login</a> <svg
                     class="icon">
                     <use xlink:href="#icon-arrow-right"></use>
                 </svg></p>
@@ -132,7 +132,7 @@
                     const responseData = await response.json();
                     localStorage.setItem('accessToken', responseData.token);
                     alert('Cadastro realizado com sucesso!');
-                    window.location.href = 'http://localhost:3000/bio';
+                    window.location.href = 'https://connectart.onrender.com/bio';
                 } else {
                     console.log('Erro na requisição:', response.status, response.statusText);
                     alert('Email, Telefone ou Username já existem. Verifique os dados e tente novamente.');

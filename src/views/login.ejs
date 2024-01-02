@@ -41,9 +41,10 @@
 
             </form>
 
-            <p class="text--center">Não tem cadastro?<a href="http://localhost:3000/register">Cadastre-se</a> <svg class="icon">
+            <p class="text--center">Não tem cadastro?<a href="https://connectart.onrender.com/register">Cadastre-se</a> <svg class="icon">
                     <use xlink:href="#icon-arrow-right"></use>
                 </svg></p>
+            <p class="text--center"><a href="https://connectart.onrender.com/register">Esqueceu sua senha?</a>
 
         </div>
 
@@ -90,7 +91,7 @@
                   'Authorization': `Bearer ${accessToken}`
                 };
                 alert('Login bem-sucedido!');
-                window.location.href = 'http://localhost:3000/home';
+                window.location.href = 'https://connectart.onrender.com/home';
               } else {
                 console.error('Erro na requisição:', response.status, response.statusText);
                 alert('Credenciais inválidas. Tente novamente.');
