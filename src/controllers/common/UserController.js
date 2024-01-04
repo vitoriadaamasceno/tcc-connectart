@@ -122,20 +122,6 @@ class UserController {
     }
   }
 
-  async getUser(req, res) {
-    try {
-      const { id } = req.params;
-      const user = await UserFinder.findById(id);
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
-      const { password, ...userWithoutPass } = user;
-      return res.status(200).json(userWithoutPass);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ message: "Internal server error", error });
-    }
-  }
 
   async createBio(req, res) {
     try {

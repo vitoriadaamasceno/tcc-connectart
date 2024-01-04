@@ -41,9 +41,11 @@
 
             </form>
 
-            <p class="text--center">Não tem cadastro?<a href="https://connectart.onrender.com/register">Cadastre-se</a> <svg class="icon">
+            <p class="text--center">Não tem cadastro?<a href="https://connectart.onrender.com/register">Cadastre-se</a>
+                <svg class="icon">
                     <use xlink:href="#icon-arrow-right"></use>
-                </svg></p>
+                </svg>
+            </p>
             <p class="text--center"><a href="https://connectart.onrender.com/register">Esqueceu sua senha?</a>
 
         </div>
@@ -67,41 +69,43 @@
         document.getElementById('loginForm').addEventListener("submit", async function (event) {
             event.preventDefault(); // Evita o envio automático do formulário
             try {
-              const formData = new FormData(this);
-              const data = Object.fromEntries(formData);
-          
-              const response = await fetch('/login', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-              });
-          
-              if (response.ok) {
-                const responseData = await response.json();
-                const accessToken = responseData.token;
-          
-                // Salve o token no armazenamento local para uso posterior
-                localStorage.setItem('accessToken', accessToken);
-          
-                // Adicione o token ao cabeçalho das próximas requisições
-                const headersWithToken = {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${accessToken}`
-                };
-                alert('Login bem-sucedido!');
-                window.location.href = 'https://connectart.onrender.com/home';
-              } else {
-                console.error('Erro na requisição:', response.status, response.statusText);
-                alert('Credenciais inválidas. Tente novamente.');
-              }
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const responseData = await response.json();
+                    const accessToken = responseData.token;
+
+                    // Salve o token no armazenamento local para uso posterior
+                    localStorage.setItem('accessToken', accessToken);
+
+                    // Adicione o token ao cabeçalho das próximas requisições
+                    const headersWithToken = {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${accessToken}`
+                    };
+
+                    alert('Login bem-sucedido!');
+                    window.location.href = 'https://connectart.onrender.com/home?token=' + accessToken;
+                } else {
+                    console.error('Erro na requisição:', response.status, response.statusText);
+                    alert('Credenciais inválidas. Tente novamente.');
+                }
+
             } catch (error) {
-              console.error('Erro na requisição:', error);
-              alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
+                console.error('Erro na requisição:', error);
+                alert('Erro ao processar a solicitação. Tente novamente mais tarde.');
             }
-          });
-          
+        });
+
     </script>
 
 </body>

@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="form__field">
-                        <a class="btn-bio" href="https://connectart.onrender.com/home">Continuar depois</a>
+                        <a class="btn-bio" href="https://connectart.onrender.com/login">Continuar depois</a>
 
                 </div>
 
@@ -124,7 +124,7 @@
                 });
     
                 if (response.ok) {
-                    window.location.href = 'https://connectart.onrender.com/home';
+                    window.location.href = 'https://connectart.onrender.com/home?token=' + accessToken;
                 } else {
                     console.error('Erro na requisição:', response.status, response.statusText);
                     alert('Erro ao processar a solicitação. Tente novamente.');

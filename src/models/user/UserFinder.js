@@ -58,5 +58,20 @@ class UserFinder {
       return undefined;
     }
   }
+
+  async findBioById(id) {
+    try {
+      const bio = await prisma.resume.findUnique({
+        where: {
+          userId: id,
+        },
+      });
+
+      return bio;
+    } catch (error) {
+      console.log(error);
+      return undefined;
+    }
+  }
 }
 module.exports = new UserFinder();
